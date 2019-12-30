@@ -1,10 +1,30 @@
+
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Search App</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">MySearch</a>
+      <ul class="right">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      </ul>
+  </div>
+</nav>
+
 <h2>Testing to see if it works</h2>
 </body>
 </html>
