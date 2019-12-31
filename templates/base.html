@@ -57,6 +57,18 @@
     </div>
 </div>
 
+    <form action="{% url 'new_search' %}" method="post">
+    <!--    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <input type="text" placeholder="search" name="search">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">cloud</i>
+        </button>
+
+    </div>
+</form>
+
 
 {% block content %}
 
