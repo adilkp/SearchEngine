@@ -4,8 +4,9 @@ from requests.compat import quote_plus
 from django.shortcuts import render
 from bs4 import BeautifulSoup
 
-BASE_GOOGLE_URL = 'https://losangeles.craigslist.org/search?query={}'
+BASE_GOOGLE_URL = 'https://seattle.craigslist.org/search?query={}'
 # BASE_GOOGLE_URL = 'https://www.google.com/search?query={}'
+BASE_IMAGE_URL = 'https://images.craigslist.org/{}_300x300.jpg'
 
 
 def home(request):
@@ -32,7 +33,15 @@ def new_search(request):
         else:
             post_price='N/A'
 
-        final_postings.append((post_title, post_url, post_price))
+        if post.find(class_='result-image').get('data-ids'):
+            post_image_id = post.find(class_='result-image').get('data-ids').split(',')[0].split(':')[1]
+            post_image_url = BASE_IMAGE_URL.format(post_image_id)
+            print(post_image_url)
+
+        else:
+            post_image_url = 'https://craigslist.org/images/peace.jpg'
+
+        final_postings.append((post_title, post_url, post_price, post_image_url))
 
     stuff_for_frontend = {
         'search': search,
